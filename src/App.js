@@ -1,25 +1,62 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Header from './Header/Header';
+import Input from './components/Input';
+import Output from './components/Output';
+import Multiplicador from './components/Multiplicador';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      InputNumberLabelName: "Multiplicar este número: ",
+      OutputNumerLaberlName: "Resultado de la multiplicación: ",
+      MultiplicadorLabelName: "Estás usando el multiplicador: ",
+      numero: null,
+      resultado: null
+    }
+  }
+  actualizarCampos = (event) => {
+    this.setState({
+      numero: event.target.value
+    })
+  }
+  
+  numeroMultiplicador(multiplicador){
+    var resultado = multiplicador * this.state.numero;
+    this.setState({
+      multiplicador: multiplicador,
+      resultado: resultado,
+    })
+  }
+
+
+  render() {
+    return (
+      <div className="App">
+        <div className="container-sm p-5 text-center">
+          <Header titulo="CALCULADORA" />
+          <Input
+            value={this.state.numero}
+            labelName={this.state.InputNumberLabelName}
+            change={this.actualizarCampos}>  
+          </Input>
+          <Multiplicador 
+            parent={this}>
+          </Multiplicador>
+          <Output
+            value={this.state.resultado}
+            labelName={this.state.OutputNumerLaberlName}>
+          </Output>     
+          <Output
+            value={this.state.multiplicador}
+            labelName={this.state.MultiplicadorLabelName}>
+          </Output>       
+        </div>
+      </div>
+    )
+  }
+
 }
 
 export default App;
