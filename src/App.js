@@ -10,12 +10,13 @@ class App extends React.Component {
     super(props);
     this.state = {
       InputNumberLabelName: "Multiplicar este número: ",
-      OutputNumerLaberlName: "Resultado de la multiplicación: ",
+      OutputNumerLaberlName: "EL resultado de la multiplicación es: ",
       MultiplicadorLabelName: "Estás usando el multiplicador: ",
       numero: null,
       resultado: null
     }
   }
+
   actualizarCampos = (event) => {
     this.setState({
       numero: event.target.value
@@ -29,7 +30,6 @@ class App extends React.Component {
       resultado: resultado,
     })
   }
-
 
   render() {
     return (
@@ -56,7 +56,6 @@ class App extends React.Component {
       </div>
     )
   }
-
 }
 
 export default App;
