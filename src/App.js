@@ -13,7 +13,8 @@ class App extends React.Component {
       OutputNumerLaberlName: "EL resultado de la multiplicación es: ",
       MultiplicadorLabelName: "Estás usando el multiplicador: ",
       numero: null,
-      resultado: null
+      resultado: null,
+      multiplicador: null
     }
   }
 
